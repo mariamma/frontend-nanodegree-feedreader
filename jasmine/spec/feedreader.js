@@ -113,11 +113,18 @@ $(function() {
          var firstArr, secArr;
 
          beforeEach(function(done){
-            initialContainer = $('.feed');
-            firstArr = $(initialContainer).text();
+            // initialContainer = $('.feed');
+            // firstArr = $(initialContainer).text();
             //console.log("Initial container : " + $(initialContainer).text());
             loadFeed(2, function(){
-                done();
+                //console.log("First loadfeed has started");
+                initialContainer = $('.feed');
+                firstArr = $(initialContainer).text();
+                //console.log("Initial container : " + $(initialContainer).text());
+                loadFeed(0, function(){
+                    done();
+                });  
+                //console.log("First loadfeed has ended");
              });   
         });
 
