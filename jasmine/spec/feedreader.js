@@ -62,7 +62,8 @@ $(function() {
          */
          it('element is hidden by default', function(){
             //expect($(".slide-menu")).toBeHidden();
-            //expect($('.menu-hidden').is(':visible')).toBe(false);
+            //expect($('.menu-hidden').is(':visible')).toBe(true);
+            expect($('.slide-menu').is(':visible')).toBe(true);
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -70,6 +71,16 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          it('menu changes visibility when the menu icon is clicked', function(){
+            var menuIcon = $('.menu-icon-link');
+            spyOnEvent('.menu-icon-link', 'click');
+            $('.menu-icon-link').click();
+            //expect($('.menu-hidden').is(':visible')).toBe(false);
+            expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
+            //$('.menu-icon-link').click();
+            //expect($('.menu-hidden').is(':visible')).toBe(true);
+            //expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
+          });
     });      
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function(){
@@ -81,7 +92,6 @@ $(function() {
          */
          beforeEach(function(done){
              loadFeed(0, function(){
-                //console.log("Function done called in beforeEach");
                 done();
              });   
         });
@@ -89,8 +99,7 @@ $(function() {
         it('calls loadFeed function and completes its work', function(done){
             var firstContainer = $('.feed');
             //console.log("Container : " + $(firstContainer).text());
-            expect(firstContainer.length).not.toEqual(0);;
-            //console.log("Function done called in expect");
+            expect(firstContainer.length).not.toEqual(0);
             done();
          });
     });
@@ -107,19 +116,17 @@ $(function() {
          beforeEach(function(done){
             initialContainer = $('.feed');
             firstArr = $(initialContainer).text();
-            console.log("Initial container : " + $(initialContainer).text());
+            //console.log("Initial container : " + $(initialContainer).text());
             loadFeed(2, function(){
-                console.log("Function done called in beforeEach");
                 done();
              });   
         });
 
          it('new feed loaded by loadfeed function changes content', function(done){
             newContainer = $('.feed');
-            console.log("Second container : " + $(newContainer).text());
+            //console.log("Second container : " + $(newContainer).text());
             secArr = $(newContainer).text();
             expect(firstArr).not.toEqual(secArr);
-            console.log("Function done called in expect");
             done();
          });
     });     
