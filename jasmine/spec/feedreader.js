@@ -71,11 +71,11 @@ $(function() {
           */
           it('menu changes visibility when the menu icon is clicked', function(){
             var menuIcon = $('.menu-icon-link');
-            spyOnEvent('.menu-icon-link', 'click');
+            //spyOnEvent('.menu-icon-link', 'click');
             $('.menu-icon-link').click();
             //console.log("Menu clicked");
             expect($('body')).not.toHaveClass('menu-hidden');
-            spyOnEvent('.menu-icon-link', 'click');
+            //spyOnEvent('.menu-icon-link', 'click');
             $('.menu-icon-link').click();
             //console.log("Menu clicked again!!");
             expect($('body')).toHaveClass('menu-hidden');
