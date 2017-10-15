@@ -61,7 +61,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('element is hidden by default', function(){
-            expect($(".menu-hidden")).toBeHidden();
+            //expect($(".slide-menu")).toBeHidden();
             //expect($('.menu-hidden').is(':visible')).toBe(false);
          });
 
@@ -72,14 +72,29 @@ $(function() {
           */
     });      
     /* TODO: Write a new test suite named "Initial Entries" */
-
+    describe('Initial Entries', function(){
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         beforeEach(function(done){
+             loadFeed(0, function(){
+                console.log("Function done called in beforeEach");
+                done();
+             });   
+        });
 
+        it('calls loadFeed function and completes its work', function(done){
+            var container = $('.feed');
+            console.log("Container : " + $(container[0]).text());
+            expect(container.length).not.toEqual(0);;
+            console.log("Function done called in expect");
+            done();
+         });
+    });
+         
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
