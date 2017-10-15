@@ -81,24 +81,46 @@ $(function() {
          */
          beforeEach(function(done){
              loadFeed(0, function(){
-                console.log("Function done called in beforeEach");
+                //console.log("Function done called in beforeEach");
                 done();
              });   
         });
 
         it('calls loadFeed function and completes its work', function(done){
-            var container = $('.feed');
-            console.log("Container : " + $(container[0]).text());
-            expect(container.length).not.toEqual(0);;
-            console.log("Function done called in expect");
+            var firstContainer = $('.feed');
+            //console.log("Container : " + $(firstContainer).text());
+            expect(firstContainer.length).not.toEqual(0);;
+            //console.log("Function done called in expect");
             done();
          });
     });
          
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe('New Feed Selection', function(){
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         var initialContainer, newContainer;
+         var firstArr, secArr;
+
+         beforeEach(function(done){
+            initialContainer = $('.feed');
+            firstArr = $(initialContainer).text();
+            console.log("Initial container : " + $(initialContainer).text());
+            loadFeed(2, function(){
+                console.log("Function done called in beforeEach");
+                done();
+             });   
+        });
+
+         it('new feed loaded by loadfeed function changes content', function(done){
+            newContainer = $('.feed');
+            console.log("Second container : " + $(newContainer).text());
+            secArr = $(newContainer).text();
+            expect(firstArr).not.toEqual(secArr);
+            console.log("Function done called in expect");
+            done();
+         });
+    });     
 }());
