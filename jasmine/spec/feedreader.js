@@ -61,9 +61,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('element is hidden by default', function(){
-            //expect($(".slide-menu")).toBeHidden();
-            //expect($('.menu-hidden').is(':visible')).toBe(true);
-            expect($('.slide-menu').is(':visible')).toBe(true);
+            expect($('.menu-hidden').is(':visible')).toBe(true);
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -75,18 +73,12 @@ $(function() {
             var menuIcon = $('.menu-icon-link');
             spyOnEvent('.menu-icon-link', 'click');
             $('.menu-icon-link').click();
-            expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
-            console.log("Menu clicked");
-            expect($('.slide-menu').is(':visible')).toBe(true);
+            //console.log("Menu clicked");
+            expect($('body')).not.toHaveClass('menu-hidden');
             spyOnEvent('.menu-icon-link', 'click');
             $('.menu-icon-link').click();
-            console.log("Menu clicked again!!");
-            expect($('.slide-menu').is(':visible')).toBe(false);
-
-            //expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
-            //$('.menu-icon-link').click();
-            //expect($('.menu-hidden').is(':visible')).toBe(true);
-            //expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
+            //console.log("Menu clicked again!!");
+            expect($('body')).toHaveClass('menu-hidden');
           });
     });      
     /* TODO: Write a new test suite named "Initial Entries" */
