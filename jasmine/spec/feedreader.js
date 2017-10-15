@@ -75,8 +75,15 @@ $(function() {
             var menuIcon = $('.menu-icon-link');
             spyOnEvent('.menu-icon-link', 'click');
             $('.menu-icon-link').click();
-            //expect($('.menu-hidden').is(':visible')).toBe(false);
             expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
+            console.log("Menu clicked");
+            expect($('.slide-menu').is(':visible')).toBe(true);
+            spyOnEvent('.menu-icon-link', 'click');
+            $('.menu-icon-link').click();
+            console.log("Menu clicked again!!");
+            expect($('.slide-menu').is(':visible')).toBe(false);
+
+            //expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
             //$('.menu-icon-link').click();
             //expect($('.menu-hidden').is(':visible')).toBe(true);
             //expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
